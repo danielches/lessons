@@ -34,7 +34,7 @@ class __Figure:
         if self.__is_valid_sides(new_sides):
             self.__sides = new_sides
 
-    def __len__(self) -> NoReturn:
+    def __len__(self) -> int | float:
         return sum(self.__sides)
 
 
