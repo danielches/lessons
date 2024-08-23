@@ -1,9 +1,9 @@
-from typing import List, Optional
+from typing import List, Optional, NoReturn
 from time import sleep
 
 
 class User:
-    def __init__(self, nickname: str, password: str, age: int) -> None:
+    def __init__(self, nickname: str, password: str, age: int) -> NoReturn:
         self.nickname = nickname
         self.password = hash(password)
         self.age = age
@@ -13,7 +13,7 @@ class User:
 
 
 class Video:
-    def __init__(self, title: str, duration: int, time_now: int = 0, adult_mode: bool = False) -> None:
+    def __init__(self, title: str, duration: int, time_now: int = 0, adult_mode: bool = False) -> NoReturn:
         self.title = title
         self.duration = duration
         self.time_now = time_now
@@ -22,27 +22,27 @@ class Video:
 
 class UrTube:
     def __init__(self, users: List[User] = None, videos: List[Video] = None,
-                 current_user: Optional[User] = None) -> None:
+                 current_user: Optional[User] = None) -> NoReturn:
         self.users = [] if users is None else users
         self.videos = [] if videos is None else videos
         self.current_user = current_user
 
-    def log_in(self, nickname: str, password: str) -> None:
+    def log_in(self, nickname: str, password: str) -> NoReturn:
         for user in self.users:
             if nickname == user.nickname and hash(password) == user.password:
                 self.current_user = user
 
-    def register(self, nickname: str, password: str, age: int) -> None:
+    def register(self, nickname: str, password: str, age: int) -> NoReturn:
         if nickname in [user.nickname for user in self.users]:
             print(f"Пользователь {nickname} уже существует")
         else:
             self.users.append(User(nickname, password, age))
         self.log_in(nickname, password)
 
-    def log_out(self) -> None:
+    def log_out(self) -> NoReturn:
         self.current_user = None
 
-    def add(self, *videos: Video) -> None:
+    def add(self, *videos: Video) -> NoReturn:
         titles_video = [v.title for v in self.videos]
         for video in videos:
             if video.title not in titles_video:
@@ -55,7 +55,7 @@ class UrTube:
                 found_videos.append(video.title)
         return found_videos
 
-    def watch_video(self, title: str):
+    def watch_video(self, title: str) -> NoReturn:
         if self.current_user is not None:
             for video in self.videos:
                 if title == video.title:
