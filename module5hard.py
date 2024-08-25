@@ -8,7 +8,7 @@ class User:
         self.password = hash(password)
         self.age = age
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"{self.nickname}"
 
 
