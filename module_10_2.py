@@ -24,7 +24,7 @@ class Knight(Thread):
             print(
                 f"{self.name} сражается {cnt_days} день(дня)..., осталось {self.cnt_enemies - cnt_def_enemies} воинов.\n",
                 end='')
-        print(f"{self.name} одержал победу спустя {cnt_days} дней(дня)!")
+        print(f"{self.name} одержал победу спустя {cnt_days} дней(дня)!\n", end='')
 
 
 # Создание класса
