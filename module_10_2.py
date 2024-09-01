@@ -13,8 +13,9 @@ class Knight(Thread):
     def run(self):
         print(f"{self.name}, на нас напали!")
         cnt_def_enemies = 0
-        cnt_days = 1
+        cnt_days = 0
         while cnt_def_enemies != self.cnt_enemies:
+            cnt_days += 1
             if cnt_def_enemies + self.power > self.cnt_enemies:
                 cnt_def_enemies += self.cnt_enemies - self.power
             else:
@@ -23,7 +24,7 @@ class Knight(Thread):
             print(
                 f"{self.name} сражается {cnt_days} день(дня)..., осталось {self.cnt_enemies - cnt_def_enemies} воинов.\n",
                 end='')
-            cnt_days += 1
+        print(f"{self.name} одержал победу спустя {cnt_days} дней(дня)!")
 
 
 # Создание класса
