@@ -1,14 +1,22 @@
-#1st program
-print(9**0.5*5)
+from aiogram import Bot, Dispatcher, executor, types
+from aiogram.contrib.fsm_storage.memory import MemoryStorage
+import asyncio
 
-#2st program
-print(9.99 > 9.98 and 1000 != 1000.1)
 
-#3st program
-a, b = 1234, 5678
-print(a%1000//10 + b%1000//10)
+api ='8029394283:AAGaz77eRey39M0nKEWcCytMg1I2X8_6TdI'
+bot = Bot(token=api)
+dp = Dispatcher(bot, storage=MemoryStorage())
 
-#4st program
-from decimal import Decimal
-a, b = 13.42, 42.13
-print(int(a) == int(b % 1 * 100) or int(b) == int(a % 1 * 100))
+
+@dp.message_handler(commands=['start'])
+async def urban_message(message):
+    print("Привет! Я бот помогающий твоему здоровью.")
+
+
+@dp.message_handler()
+async def all_messages(message):
+    print("Введите команду /start, чтобы начать общение.rtg")
+
+
+if __name__ == '__main__':
+    executor.start_polling(dp, skip_updates=True)
