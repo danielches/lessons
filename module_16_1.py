@@ -23,7 +23,3 @@ async def welcome(user_id: str) -> dict:
 @app.get("/user/")
 async def welcome(username: str, age: int) -> dict:
     return {"message": f"Информация о пользователе. Имя: {username}, Возраст: {age}"}
-
-@app.get("/id/")
-async def welcome(username: str, age: int) -> dict:
-    return {"message": f"Информация о пользователе."}
